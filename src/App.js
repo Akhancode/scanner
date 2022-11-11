@@ -14,6 +14,7 @@ function App() {
     const [showData,setShowData] = useState([])
     const [coingecko,setCoingecko] = useState([])
     let [FilteredData , setFilteredData ] = useState([])
+    let profitData = []
 
     class CoinClass {
       constructor(name, Binprice=null,CoinBaseprice=null,basePair) {
@@ -26,12 +27,31 @@ function App() {
     const test =async()=>{
       try{
         console.log("test")
+        let ETH_USDT=(Binancedata?.filter((x)=>x.symbol === `ETHUSDT`))[0]?.price
+        let BTC_USDT=(Binancedata?.filter((x)=>x.symbol === `BTCUSDT`))[0]?.price
+        showData.forEach((element,index) => {
+          
+              profitData.push({
+                "index":index,
+                "coin":element.symbol,
+                "p_USDT":element.price_USDT,
+                "p_ETH":element.price_ETH,
+                "ETH_USDT":ETH_USDT,
+                "p_BTC":element.price_BTC,
+                "BTC_USDT":BTC_USDT,
+                "profit_ETH":100-((100/element.price_USDT)*element.price_ETH*ETH_USDT),
+                "profit_BTC":100-((100/element.price_USDT)*element.price_BTC*BTC_USDT)
+              })
         
-        await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=7d%2C24h%2C30d").then((response)=>{
-          setCoingecko(response.data)
-        }).then(()=>{
-          console.log(coingecko)
-        })
+          
+        });
+        
+        // await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=7d%2C24h%2C30d").then((response)=>{
+        //   setCoingecko(response.data)
+        // }).then(()=>{
+        //   console.log(coingecko)
+        // })
+        console.log(profitData)
         
       }
       catch(err){
@@ -40,7 +60,6 @@ function App() {
       }
 
     }
-
 
     const MakeData =async () =>{ 
     //  GET COINGECKO DATA
@@ -78,8 +97,30 @@ function App() {
         })
       })
 
+      //CALCULATING PROFIT AND PUSHING INTO PROFITDATA ARRAY
+      let ETH_USDT=(Binancedata?.filter((x)=>x.symbol === `ETHUSDT`))[0]?.price
+      let BTC_USDT=(Binancedata?.filter((x)=>x.symbol === `BTCUSDT`))[0]?.price
+      FilteredData.forEach((element,index) => {
+        
+            profitData.push({
+              "index":index,
+              "coin":element.symbol,
+              "p_USDT":element.price_USDT,
+              "p_ETH":element.price_ETH,
+              "ETH_USDT":ETH_USDT,
+              "p_BTC":element.price_BTC,
+              "BTC_USDT":BTC_USDT,
+              "profit_ETH":100-((100/element.price_USDT)*element.price_ETH*ETH_USDT),
+              "profit_BTC":100-((100/element.price_USDT)*element.price_BTC*BTC_USDT)
+            })
+      
+        
+      });
+      
+      //MOVING FILTERED DATA TO SHOWDATA AND EMPTYING THE FILTERDATA
       setShowData(FilteredData)
       setFilteredData([])
+      
     }
 
     const check = () =>{
@@ -112,9 +153,10 @@ function App() {
       <body>
         <h3>Table</h3>
         <div className="container">
-        <button onClick={test}>Check coinmarket cap</button>
+        <button onClick={test}>Test</button>
          <button onClick={MakeData}>Make Data</button>
          <button onClick={check}>CHECK</button>
+         <button onClick={test}>Get Profit</button>
             <table>
               <tr>
                 <th>INDEX</th>
@@ -127,6 +169,10 @@ function App() {
                  
                  showData?.map((coin,i)=>{                  
                   {
+                
+                    console.log("***********************************************")
+                    console.log(profitData)
+                    
                     
                      return(
                       <tr>
@@ -135,7 +181,11 @@ function App() {
                         <td>{coin.price_BTC}</td>
                         <td>{coin.price_ETH}</td>
                         <td>{coin.price_USDT}</td>
-                        {/* {coin.coinbase?<td>{coin.coinbase}</td>:<td className='null'>N/A</td>} */}
+
+                        <td>{profitData}</td>
+
+
+                        {/* <td>{profitData[i]}</td> */}
                       </tr>
                      ) 
                   }
