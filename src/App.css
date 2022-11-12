@@ -30,7 +30,10 @@
 .App-link {
   color: #61dafb;
 }
-
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+}
 .container{
   background-color: #282c34;
   min-height: 100vh;
