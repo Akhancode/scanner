@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import "bootstrap/dist/css/bootstrap.min.css";
 const Live_page = () => {
     const location = useLocation()
     const {symbol} = location.state
