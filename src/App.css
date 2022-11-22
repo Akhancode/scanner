@@ -12,16 +12,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.btn_none{
+  all: unset;
+  cursor: pointer;
+}
+.btn_none:hover{
+  color: green;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.tableContainer{
+  table-layout: fixed;
+  width: fit-content;
 }
 
 .null{
@@ -37,6 +38,8 @@
 .container{
   background-color: #282c34;
   min-height: 100vh;
+  min-width: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,13 +48,18 @@
   color: white;
 }
 th{
-  color:orange
+  color:orange;
+  font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 83px;
 }
 table,th,td{
   border: whitesmoke;
   border-style: solid;
   border-collapse: separate;
   padding: 30px;
+  margin-top: 5vh;
 }
 
 @keyframes App-logo-spin {
@@ -61,4 +69,145 @@ table,th,td{
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Live_Data */
+
+.liveDataContainer{
+  /* position: relative;
+  background: #FFFFFF;
+  border: #282c34;
+  border-style: solid;
+  display: flex;
+  flex-wrap: wrap; */
+  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+
+  width: 70vw;
+  height: 100vh; 
+  border: 1px solid #c3c3c3;
+  flex-wrap: wrap;
+  border-style: hidden;
+  
+}
+
+.liveDataContainer > div{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+
+}
+
+
+
+/* SymbolDiv */
+.symbolDiv{
+
+width: 20.5vw;
+height: 23vh;
+background: #D9D9D9;}
+
+/* PriceDiv */
+.priceDiv{
+  width: 20.5vw;
+  height: 23vh;
+background: #BFBFBF;
+}
+
+.profitDiv{
+width: 20.5vw;
+height: 23vh;
+background: #626362;
+}
+
+/* BTC */
+
+
+.symbolText{
+
+/* position: absolute; */
+font-family: 'Digital Numbers';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 83px;
+color: #484848;
+
+}
+/* $16000 */
+
+
+.priceText{
+font-family: 'Digital Numbers';
+font-style: normal;
+font-weight: 400;
+font-size: 63px;
+line-height: 81px;
+color: #FFFFFF;
+}
+.tableClass{
+  width: 25vw;
+  border-collapse: inherit;
+  border-style: solid;
+}
+.table_name_bids{
+  text-align: center;
+  color: green;
+}
+.table_name_asks{
+  text-align: center;
+  color: red;
+}
+.table_col_1{
+  background: #D9D9D9;
+}
+.table_col_2{
+  background: #BFBFBF;
+}
+.table_col_3{
+  background-color: #484848;
+  color:white;
+  font-weight: 400;
+}
+.arrow{
+box-sizing: border-box;
+
+position: absolute;
+width: 168px;
+height: 0px;
+left: 453px;
+top: 551px;
+
+border: 3px solid #000000;}
+
+.bidaskContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profitContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 40px;
+}
+.profitData{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+.table_profit{
+  width: fit-content;
+  height: auto;
+
 }
