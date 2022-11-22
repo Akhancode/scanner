@@ -38,7 +38,7 @@
 .container{
   background-color: #282c34;
   min-height: 100vh;
-  min-width: 100vh;
+  min-width: 100vw;
 
   display: flex;
   flex-direction: column;
@@ -153,7 +153,7 @@ line-height: 81px;
 color: #FFFFFF;
 }
 .tableClass{
-  width: 25vw;
+  width: 10vw;
   border-collapse: inherit;
   border-style: solid;
 }
@@ -199,6 +199,7 @@ border: 3px solid #000000;}
   align-items: center;
   flex-direction: row;
   padding: 40px;
+ 
 }
 .profitData{
   display: flex;
@@ -209,5 +210,11 @@ border: 3px solid #000000;}
 .table_profit{
   width: fit-content;
   height: auto;
+
+}
+.navDiv{
+  display: flex;
+  flex-wrap: wrap;
+  width: 50vw;
 
 }
